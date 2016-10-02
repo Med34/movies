@@ -1,0 +1,20 @@
+<% include header %>
+
+<div class="container">
+	<div class="main-container">
+		<h1><%= movie.data.properties.title %></h1>
+		<p><span class="bold">Tagline</span> <%= movie.data.properties.tagline %></p>
+		<p><span class="bold">Released</span> <%= movie.data.properties.released %></p>
+
+		<% if (actors.length > 0) { %>
+			<p>
+				<span class="bold">Actors</span><br>
+				<% for (var i = 0; i < actors.length; i++) { %>
+					<%= actors[i].actor.properties.name %> <br>
+				<% } %>
+			</p>
+		<% } %>
+	</div>
+</div>
+
+<% include footer %>

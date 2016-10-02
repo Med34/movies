@@ -7,7 +7,6 @@
 			<thead>
 				<tr>
 					<th>Title</th>
-					<th>Tagline</th>
 					<th>Released</th>
 				</tr>
 			</thead>
@@ -15,8 +14,7 @@
 			<tbody>
 					<% for (var i = 0; i < movies.length; i++) { %>
 						<tr>
-							<td><%= movies[i].data.properties.title %></td>
-						 	<td><%= movies[i].data.properties.tagline %></td>
+							<td><a href="/movies/<%= movies[i].data._id %>" ><%= movies[i].data.properties.title %></a></td>
 						 	<td><%= movies[i].data.properties.released %></td>
 					 	<tr>
 					<% } %>

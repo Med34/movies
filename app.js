@@ -12,6 +12,7 @@ app.set('view engine', 'ejs');
 // Routes.
 app.get('/', routes.site.index);
 app.get('/movies', routes.movies.list);
+app.get('/movies/:id', routes.movies.show);
 
 // Start the server.
 var server = http.createServer(app);
