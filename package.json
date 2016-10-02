@@ -1,0 +1,10 @@
+{
+  "name": "search-engine-movies",
+  "version": "0.1.0",
+  "dependencies": {
+    "ejs": "~2.5.2",
+    "express": "~4.14.0"
+  },
+  "author": "Med34 <m.dulondel@gmail.com>",
+  "description": "A little test for neo4j + nodejs"
+}
