@@ -6,6 +6,7 @@ var app = express();
 
 // Set up the environment.
 app.set('views', __dirname + "/views");
+app.use('/public', express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
 // Routes.
