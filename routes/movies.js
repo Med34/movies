@@ -3,5 +3,5 @@
  */
 
 exports.list = function(req, res) {
-	console.log('Movies');
+	res.render('movies.ejs');
 };

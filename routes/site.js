@@ -3,5 +3,5 @@
  */
 
 exports.index = function(req, res) {
-	console.log('home page');
+	res.render('index.ejs');
 };

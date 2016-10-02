@@ -5,7 +5,7 @@ var http = require('http');
 var app = express();
 
 // Set up the environment.
-app.set('views', __dirname + "'/views");
+app.set('views', __dirname + "/views");
 app.set('view engine', 'ejs');
 
 // Routes.
