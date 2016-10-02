@@ -11,6 +11,9 @@ var Movie = function(data) {
 
 Movie.prototype.data = {};
 
+/**
+ * Get all movies objects.
+ */
 Movie.getAll = function(callback) {
 	var query = [
         'MATCH (movie:Movie)',

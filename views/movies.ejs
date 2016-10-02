@@ -3,11 +3,25 @@
 <div class="container">
 	<div class="main-container">
 		<h1>Movies page</h1>
-		<ul>
-			<% for (var i = 0; i < movies.length; i++) { %>
-			<li><%= movies[i].data.properties.title %></li>
-			<% } %>
-		</ul>
+		<table class="table table-striped" id="moviesTable">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Tagline</th>
+					<th>Released</th>
+				</tr>
+			</thead>
+
+			<tbody>
+					<% for (var i = 0; i < movies.length; i++) { %>
+						<tr>
+							<td><%= movies[i].data.properties.title %></td>
+						 	<td><%= movies[i].data.properties.tagline %></td>
+						 	<td><%= movies[i].data.properties.released %></td>
+					 	<tr>
+					<% } %>
+			</tbody>
+		</table>
 	</div>
 </div>
 
