@@ -12,57 +12,57 @@ var Movie = function(data) {
 Movie.prototype.data = {};
 
 /**
- * Get all movies objects.
+ * Static methods. 
  */
-Movie.getAll = function(callback) {
-	var query = 'MATCH (movie:Movie) RETURN movie';
 
+// Get all movies objects.
+Movie.getAll = function(callback) {
     db.cypher({
-        query: query,
-    }, function (err, results) {
+        query: 'MATCH (movie:Movie) RETURN movie',
+    },
+    function (err, results) {
         if (err) return callback(err);
+
+        // Create all movies object with the result.
         var movies = results.map(function (result) {
             return new Movie(result.movie);
         });
+
         callback(null, movies);
     });
 };
 
-/**
- * Get one movie by id
- */
+// Find movie by id.
 Movie.get = function(id, callback) {
-    var query = 'MATCH(movie) WHERE ID(movie) = {id} return movie';
-
-    var params = {
-        id: parseFloat(id),
-    };
-
     db.cypher({
-        query: query,
-        params: params,
-    }, function(err, results){
+        query: 'MATCH(movie) WHERE ID(movie) = {id} return movie',
+        params: {id: parseFloat(id)},
+    },
+    function(err, results){
         if (err) return callback(err);
+
+        // No results.
         if (!results.length) {
             err = new Error('No movie');
             return callback(err);
         }
+
+        // Create one movie.
         var movie = new Movie(results[0].movie);
         callback(null, movie);
     });
 };
 
 
-Movie.prototype.getActorsByMovie = function(callback) {
-    var query = 'MATCH (actor:Person) MATCH (movie:Movie) WHERE ID(movie) = {id} MATCH (actor)-[:ACTED_IN]->(movie) return actor';
-    
-    var params = {
-        id: this.data._id,
-    };
+/**
+ * Prototype methods.
+ */
 
+// Get all actors nodes that acted_in in the current movie.
+Movie.prototype.getActorsByMovie = function(callback) {
     db.cypher({
-        query: query,
-        params: params,
+        query: 'MATCH (actor:Person) MATCH (movie:Movie) WHERE ID(movie) = {id} MATCH (actor)-[:ACTED_IN]->(movie) return actor',
+        params: {id: this.data._id,},
     }, function(err, results) {
         if (err) return callback(err);
         callback(null, results);
